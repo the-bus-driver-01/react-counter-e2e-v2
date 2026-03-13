@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive UI Components</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <h1>Interactive UI Components</h1>
+    <p>Vanilla JS &middot; No frameworks</p>
+  </header>
+
+  <main class="container">
+
+    <!-- ========== TABS ========== -->
+    <section class="component-section" aria-label="Tabs demo">
+      <h2>Tabs</h2>
+      <div class="tabs" role="tablist" aria-label="Sample tabs">
+        <button class="tab-btn active" role="tab" aria-selected="true" aria-controls="tab-panel-1" id="tab-1">Dashboard</button>
+        <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-panel-2" id="tab-2">Analytics</button>
+        <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-panel-3" id="tab-3">Settings</button>
+      </div>
+      <div class="tab-panel active" role="tabpanel" id="tab-panel-1" aria-labelledby="tab-1">
+        <h3>Dashboard</h3>
+        <p>Welcome back! Your project is running smoothly with 99.9% uptime this month.</p>
+      </div>
+      <div class="tab-panel" role="tabpanel" id="tab-panel-2" aria-labelledby="tab-2" hidden>
+        <h3>Analytics</h3>
+        <p>Page views are up 23% compared to last week. Top referrer: organic search.</p>
+      </div>
+      <div class="tab-panel" role="tabpanel" id="tab-panel-3" aria-labelledby="tab-3" hidden>
+        <h3>Settings</h3>
+        <p>Manage your notification preferences, theme, and account details here.</p>
+      </div>
+    </section>
+
+    <!-- ========== ACCORDION ========== -->
+    <section class="component-section" aria-label="Accordion demo">
+      <h2>Accordion</h2>
+      <div class="accordion">
+        <div class="accordion-item">
+          <button class="accordion-header" aria-expanded="false" aria-controls="acc-panel-1">
+            <span>What is this project?</span>
+            <span class="accordion-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="accordion-body" id="acc-panel-1" role="region" hidden>
+            <p>A collection of interactive UI components built entirely with vanilla HTML, CSS, and JavaScript — no frameworks required.</p>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <button class="accordion-header" aria-expanded="false" aria-controls="acc-panel-2">
+            <span>Is it accessible?</span>
+            <span class="accordion-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="accordion-body" id="acc-panel-2" role="region" hidden>
+            <p>Yes. Every component uses proper ARIA attributes, keyboard navigation, and focus management.</p>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <button class="accordion-header" aria-expanded="false" aria-controls="acc-panel-3">
+            <span>Can I use it in production?</span>
+            <span class="accordion-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="accordion-body" id="acc-panel-3" role="region" hidden>
+            <p>Absolutely. The code is production-quality, responsive, and lightweight.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== MODAL ========== -->
+    <section class="component-section" aria-label="Modal demo">
+      <h2>Modal Dialog</h2>
+      <button class="btn btn-primary" id="open-modal-btn">Open Contact Form</button>
+      <div class="modal-overlay" id="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-title" hidden>
+        <div class="modal">
+          <div class="modal-header">
+            <h3 id="modal-title">Contact Us</h3>
+            <button class="modal-close" aria-label="Close dialog">&times;</button>
+          </div>
+          <div class="modal-body">
+            <form id="modal-form" novalidate>
+              <div class="form-group">
+                <label for="modal-name">Name</label>
+                <input type="text" id="modal-name" required placeholder="Your name">
+              </div>
+              <div class="form-group">
+                <label for="modal-email">Email</label>
+                <input type="email" id="modal-email" required placeholder="you@example.com">
+              </div>
+              <div class="form-group">
+                <label for="modal-message">Message</label>
+                <textarea id="modal-message" rows="3" required placeholder="How can we help?"></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary">Send Message</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== DROPDOWN ========== -->
+    <section class="component-section" aria-label="Dropdown demo">
+      <h2>Dropdown Menu</h2>
+      <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+          Actions <span class="dropdown-arrow" aria-hidden="true">&#9662;</span>
+        </button>
+        <ul class="dropdown-menu" role="menu" hidden>
+          <li role="menuitem" tabindex="-1" data-action="edit">Edit Item</li>
+          <li role="menuitem" tabindex="-1" data-action="duplicate">Duplicate</li>
+          <li role="menuitem" tabindex="-1" data-action="archive">Archive</li>
+          <li class="dropdown-divider" role="separator"></li>
+          <li role="menuitem" tabindex="-1" data-action="delete" class="danger">Delete</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ========== FORM VALIDATION ========== -->
+    <section class="component-section" aria-label="Form validation demo">
+      <h2>Form with Validation</h2>
+      <form class="validated-form" id="validated-form" novalidate>
+        <div class="form-group">
+          <label for="v-username">Username <span class="required">*</span></label>
+          <input type="text" id="v-username" required minlength="3" maxlength="20" pattern="^[a-zA-Z0-9_]+$" placeholder="alphanumeric and underscores">
+          <span class="form-hint">3–20 characters, letters, numbers, underscores</span>
+          <span class="form-error" aria-live="polite"></span>
+        </div>
+        <div class="form-group">
+          <label for="v-email">Email <span class="required">*</span></label>
+          <input type="email" id="v-email" required placeholder="you@example.com">
+          <span class="form-error" aria-live="polite"></span>
+        </div>
+        <div class="form-group">
+          <label for="v-password">Password <span class="required">*</span></label>
+          <input type="password" id="v-password" required minlength="8" placeholder="Min 8 characters">
+          <div class="password-strength" aria-live="polite">
+            <div class="password-strength-bar"></div>
+          </div>
+          <span class="form-error" aria-live="polite"></span>
+        </div>
+        <div class="form-group">
+          <label for="v-confirm">Confirm Password <span class="required">*</span></label>
+          <input type="password" id="v-confirm" required placeholder="Repeat password">
+          <span class="form-error" aria-live="polite"></span>
+        </div>
+        <button type="submit" class="btn btn-primary">Create Account</button>
+      </form>
+    </section>
+
+    <!-- ========== TOAST NOTIFICATIONS ========== -->
+    <section class="component-section" aria-label="Toast demo">
+      <h2>Toast Notifications</h2>
+      <div class="btn-group">
+        <button class="btn btn-success" data-toast="success" data-msg="Operation completed successfully!">Success</button>
+        <button class="btn btn-danger" data-toast="error" data-msg="Something went wrong. Please try again.">Error</button>
+        <button class="btn btn-info" data-toast="info" data-msg="Here's some useful information for you.">Info</button>
+        <button class="btn btn-warning" data-toast="warning" data-msg="Careful — this action cannot be undone.">Warning</button>
+      </div>
+    </section>
+    <div class="toast-container" id="toast-container" aria-live="polite" aria-relevant="additions"></div>
+
+    <!-- ========== TOGGLE SWITCH ========== -->
+    <section class="component-section" aria-label="Toggle demo">
+      <h2>Toggle Switch</h2>
+      <div class="toggle-group">
+        <label class="toggle-label">
+          <span class="toggle-switch">
+            <input type="checkbox" id="toggle-notifications">
+            <span class="toggle-slider"></span>
+          </span>
+          Enable Notifications
+        </label>
+        <label class="toggle-label">
+          <span class="toggle-switch">
+            <input type="checkbox" id="toggle-darkmode">
+            <span class="toggle-slider"></span>
+          </span>
+          Dark Mode
+        </label>
+        <label class="toggle-label">
+          <span class="toggle-switch">
+            <input type="checkbox" id="toggle-autosave" checked>
+            <span class="toggle-slider"></span>
+          </span>
+          Auto-save
+        </label>
+      </div>
+      <p class="toggle-status" id="toggle-status" aria-live="polite"></p>
+    </section>
+
+    <!-- ========== PROGRESS BAR ========== -->
+    <section class="component-section" aria-label="Progress bar demo">
+      <h2>Progress Bar</h2>
+      <div class="progress-wrapper">
+        <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" id="progress-bar">
+          <div class="progress-fill" id="progress-fill">
+            <span class="progress-text" id="progress-text">0%</span>
+          </div>
+        </div>
+      </div>
+      <div class="btn-group" style="margin-top:1rem;">
+        <button class="btn btn-primary" id="progress-start">Start Upload</button>
+        <button class="btn btn-secondary" id="progress-reset">Reset</button>
+      </div>
+    </section>
+
+    <!-- ========== TOOLTIP ========== -->
+    <section class="component-section" aria-label="Tooltip demo">
+      <h2>Tooltip</h2>
+      <p>Hover over the buttons below to see helpful hints.</p>
+      <div class="btn-group">
+        <button class="btn btn-secondary tooltip-trigger" data-tooltip="Save your current progress" data-tooltip-pos="top">Save</button>
+        <button class="btn btn-secondary tooltip-trigger" data-tooltip="Undo the last action" data-tooltip-pos="bottom">Undo</button>
+        <button class="btn btn-secondary tooltip-trigger" data-tooltip="Share with your team" data-tooltip-pos="left">Share</button>
+        <button class="btn btn-secondary tooltip-trigger" data-tooltip="Open application settings" data-tooltip-pos="right">Settings</button>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <p>Built with vanilla HTML, CSS &amp; JavaScript</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
