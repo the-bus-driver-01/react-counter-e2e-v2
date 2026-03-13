@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fake Claude API — Dashboard</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="header">
+    <h1 class="header__title">Fake Claude API</h1>
+    <p class="header__subtitle">Dashboard &amp; Test Console</p>
+    <div class="header__status">
+      <span id="status-indicator" class="status-dot status-dot--unknown"></span>
+      <span id="status-text">Checking…</span>
+    </div>
+  </header>
+
+  <main class="main">
+    <!-- Server Info Panel -->
+    <section class="panel panel--info" id="info-panel">
+      <h2 class="panel__title">Server Info</h2>
+      <dl class="info-grid" id="server-info">
+        <dt>Endpoint</dt>
+        <dd id="info-endpoint">—</dd>
+        <dt>Status</dt>
+        <dd id="info-status">—</dd>
+      </dl>
+    </section>
+
+    <!-- Test Console -->
+    <section class="panel panel--console">
+      <h2 class="panel__title">Test Console</h2>
+      <form id="test-form" class="console-form">
+        <label class="form-label" for="base-url">Base URL</label>
+        <input
+          class="form-input"
+          id="base-url"
+          type="url"
+          value="http://localhost:4321"
+          placeholder="http://localhost:4321"
+        >
+
+        <label class="form-label" for="model-select">Model</label>
+        <select class="form-input" id="model-select">
+          <option value="claude-sonnet-4-20250514">claude-sonnet-4-20250514</option>
+          <option value="claude-opus-4-20250514">claude-opus-4-20250514</option>
+          <option value="claude-haiku-4-20250506">claude-haiku-4-20250506</option>
+        </select>
+
+        <label class="form-label" for="prompt-input">Prompt</label>
+        <textarea
+          class="form-input form-input--textarea"
+          id="prompt-input"
+          rows="4"
+          placeholder="Enter a test prompt…"
+        >Hello, Claude! What can you help me with today?</textarea>
+
+        <label class="form-label">
+          <input type="checkbox" id="stream-toggle" checked>
+          Stream response
+        </label>
+
+        <div class="form-actions">
+          <button class="btn btn--primary" type="submit" id="send-btn">Send Request</button>
+          <button class="btn btn--secondary" type="button" id="clear-btn">Clear</button>
+        </div>
+      </form>
+
+      <!-- Response Area -->
+      <div class="response-area">
+        <h3 class="response-area__title">Response</h3>
+        <div class="response-area__meta" id="response-meta"></div>
+        <pre class="response-area__output" id="response-output"><span class="placeholder">Response will appear here…</span></pre>
+      </div>
+    </section>
+
+    <!-- Request Log -->
+    <section class="panel panel--log">
+      <h2 class="panel__title">
+        Request Log
+        <button class="btn btn--small" id="clear-log-btn">Clear</button>
+      </h2>
+      <ul class="log-list" id="log-list">
+        <li class="log-list__empty">No requests yet.</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>Fake Claude API Dashboard — vanilla JS, no dependencies</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
