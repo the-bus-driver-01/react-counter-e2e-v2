@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Keyboard Shortcuts Editor</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app">
+    <header class="header">
+      <h1>Keyboard Shortcuts Editor</h1>
+      <button id="help-toggle" class="btn btn-help" aria-label="Toggle shortcuts help">
+        <kbd>?</kbd> Shortcuts
+      </button>
+    </header>
+
+    <main class="main">
+      <!-- Editor Area -->
+      <section class="editor-section">
+        <div class="toolbar">
+          <button id="btn-bold" class="toolbar-btn" title="Bold (Ctrl+B)"><strong>B</strong></button>
+          <button id="btn-italic" class="toolbar-btn" title="Italic (Ctrl+I)"><em>I</em></button>
+          <button id="btn-underline" class="toolbar-btn" title="Underline (Ctrl+U)"><u>U</u></button>
+          <span class="toolbar-sep"></span>
+          <button id="btn-save" class="toolbar-btn" title="Save (Ctrl+S)">Save</button>
+          <button id="btn-undo" class="toolbar-btn" title="Undo (Ctrl+Z)">Undo</button>
+          <button id="btn-redo" class="toolbar-btn" title="Redo (Ctrl+Shift+Z)">Redo</button>
+          <span class="toolbar-sep"></span>
+          <button id="btn-find" class="toolbar-btn" title="Find (Ctrl+F)">Find</button>
+        </div>
+        <div class="find-bar hidden" id="find-bar">
+          <input type="text" id="find-input" placeholder="Find text..." aria-label="Find text">
+          <button id="find-close" class="btn-close" aria-label="Close find bar">&times;</button>
+        </div>
+        <textarea id="editor" class="editor" placeholder="Start typing... Press ? to view keyboard shortcuts." spellcheck="false"></textarea>
+        <div class="status-bar">
+          <span id="status-message">Ready</span>
+          <span id="char-count">0 chars</span>
+        </div>
+      </section>
+
+      <!-- Shortcuts Panel -->
+      <aside class="shortcuts-panel hidden" id="shortcuts-panel">
+        <div class="panel-header">
+          <h2>Keyboard Shortcuts</h2>
+          <button id="panel-close" class="btn-close" aria-label="Close panel">&times;</button>
+        </div>
+        <div class="shortcuts-list" id="shortcuts-list">
+          <!-- Populated by JS -->
+        </div>
+      </aside>
+    </main>
+
+    <!-- Toast Notifications -->
+    <div class="toast-container" id="toast-container"></div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
