@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fake Claude API — Dashboard</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="header">
+      <div class="header__title">
+        Fake Claude API
+        <span class="badge badge--success">
+          <span class="badge__dot badge__dot--live"></span>
+          Running
+        </span>
+      </div>
+      <span class="header__subtitle">Local proxy — claude -p backend</span>
+    </header>
+
+    <!-- Main content -->
+    <main class="container">
+      <!-- Stats row -->
+      <section class="grid grid--3 mb-6" id="stats">
+        <div class="card">
+          <div class="stat">
+            <div class="stat__value" id="stat-requests">0</div>
+            <div class="stat__label">Requests</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="stat">
+            <div class="stat__value" id="stat-tokens">0</div>
+            <div class="stat__label">Est. Tokens</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="stat">
+            <div class="stat__value" id="stat-errors">0</div>
+            <div class="stat__label">Errors</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Quick setup -->
+      <section class="card mb-6">
+        <div class="card__header">
+          <h3 class="card__title">Quick Setup</h3>
+          <button
+            class="btn btn--secondary btn--sm"
+            id="copy-config"
+            type="button"
+          >
+            Copy
+          </button>
+        </div>
+        <div class="config-block" id="config-block">
+          <code
+            >export ANTHROPIC_BASE_URL=http://localhost:4321<br />
+            export ANTHROPIC_API_KEY=fake-key</code
+          >
+        </div>
+      </section>
+
+      <!-- Request log -->
+      <section class="card">
+        <div class="card__header">
+          <h3 class="card__title">Recent Requests</h3>
+          <button
+            class="btn btn--secondary btn--sm"
+            id="clear-log"
+            type="button"
+          >
+            Clear
+          </button>
+        </div>
+        <div id="log-container">
+          <div class="empty">
+            <div class="empty__icon">~</div>
+            <p class="empty__text">
+              No requests yet. Point your app at this server to get started.
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
