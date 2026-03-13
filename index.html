@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Data Export Tool</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-container">
+    <header class="app-header">
+      <h1>Data Export Tool</h1>
+      <p class="subtitle">Add, manage, and export your data in multiple formats</p>
+    </header>
+
+    <main class="app-main">
+      <!-- Data Entry Section -->
+      <section class="data-entry" aria-label="Data entry">
+        <h2>Add Data</h2>
+        <form id="data-form" class="data-form">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="field-name">Name</label>
+              <input type="text" id="field-name" placeholder="Enter name" required>
+            </div>
+            <div class="form-group">
+              <label for="field-email">Email</label>
+              <input type="email" id="field-email" placeholder="Enter email" required>
+            </div>
+            <div class="form-group">
+              <label for="field-role">Role</label>
+              <input type="text" id="field-role" placeholder="Enter role">
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary">Add Entry</button>
+        </form>
+      </section>
+
+      <!-- Data Table Section -->
+      <section class="data-table-section" aria-label="Data table">
+        <div class="table-header">
+          <h2>Data (<span id="entry-count">0</span> entries)</h2>
+          <div class="table-actions">
+            <button id="btn-clear" class="btn btn-danger" disabled>Clear All</button>
+          </div>
+        </div>
+        <div class="table-wrapper">
+          <table id="data-table" class="data-table">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Role</th>
+                <th>Added</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="table-body">
+              <tr class="empty-row">
+                <td colspan="6">No data yet. Add an entry above to get started.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Export Section -->
+      <section class="export-section" aria-label="Export options">
+        <h2>Export Data</h2>
+        <div class="export-options">
+          <div class="export-card" data-format="csv">
+            <div class="export-icon">📄</div>
+            <h3>CSV</h3>
+            <p>Comma-separated values. Compatible with Excel, Google Sheets, and databases.</p>
+            <button class="btn btn-export" data-format="csv" disabled>Export CSV</button>
+          </div>
+          <div class="export-card" data-format="json">
+            <div class="export-icon">{ }</div>
+            <h3>JSON</h3>
+            <p>JavaScript Object Notation. Ideal for APIs, web apps, and data interchange.</p>
+            <button class="btn btn-export" data-format="json" disabled>Export JSON</button>
+          </div>
+          <div class="export-card" data-format="tsv">
+            <div class="export-icon">⇥</div>
+            <h3>TSV</h3>
+            <p>Tab-separated values. Easy to paste into spreadsheets and text editors.</p>
+            <button class="btn btn-export" data-format="tsv" disabled>Export TSV</button>
+          </div>
+          <div class="export-card" data-format="xml">
+            <div class="export-icon">&lt;/&gt;</div>
+            <h3>XML</h3>
+            <p>Extensible Markup Language. Used in enterprise systems and configuration files.</p>
+            <button class="btn btn-export" data-format="xml" disabled>Export XML</button>
+          </div>
+        </div>
+
+        <!-- Export Options -->
+        <div class="export-settings">
+          <h3>Export Settings</h3>
+          <div class="settings-row">
+            <label class="checkbox-label">
+              <input type="checkbox" id="include-headers" checked>
+              Include column headers
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" id="include-timestamp" checked>
+              Include timestamp column
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" id="pretty-print" checked>
+              Pretty-print output (JSON/XML)
+            </label>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Toast notification -->
+    <div id="toast" class="toast" aria-live="polite"></div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
