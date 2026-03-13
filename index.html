@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fake Claude API — Dashboard</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="header">
+    <div class="header__brand">
+      <h1 class="header__title">Fake Claude API</h1>
+      <span class="header__badge" id="status-badge">Checking…</span>
+    </div>
+    <p class="header__subtitle">Proxy dashboard — routes Anthropic SDK requests through <code>claude -p</code></p>
+  </header>
+
+  <main class="main">
+    <!-- Connection Info Panel -->
+    <section class="panel panel--info">
+      <h2 class="panel__heading">Connection</h2>
+      <div class="info-grid">
+        <div class="info-item">
+          <label>Base URL</label>
+          <code id="base-url">http://localhost:4321</code>
+        </div>
+        <div class="info-item">
+          <label>API Key</label>
+          <code>fake-key</code>
+        </div>
+        <div class="info-item">
+          <label>Endpoint</label>
+          <code>POST /v1/messages</code>
+        </div>
+        <div class="info-item">
+          <label>Server</label>
+          <span id="server-status">—</span>
+        </div>
+      </div>
+      <div class="info-actions">
+        <label for="base-url-input" class="sr-only">Server URL</label>
+        <input type="url" id="base-url-input" class="input" value="http://localhost:4321" placeholder="http://localhost:4321">
+        <button class="btn btn--secondary" id="btn-check">Check Status</button>
+      </div>
+    </section>
+
+    <!-- Test Console -->
+    <section class="panel panel--console">
+      <h2 class="panel__heading">Test Console</h2>
+
+      <div class="console-controls">
+        <div class="control-row">
+          <div class="control-group">
+            <label for="model-select">Model</label>
+            <select id="model-select" class="input">
+              <option value="claude-sonnet-4-20250514">claude-sonnet-4-20250514</option>
+              <option value="claude-haiku-4-5-20251001">claude-haiku-4-5-20251001</option>
+              <option value="claude-opus-4-6">claude-opus-4-6</option>
+              <option value="sonnet">sonnet</option>
+              <option value="haiku">haiku</option>
+              <option value="opus">opus</option>
+            </select>
+          </div>
+          <div class="control-group">
+            <label for="stream-toggle">Stream</label>
+            <input type="checkbox" id="stream-toggle" checked>
+          </div>
+          <div class="control-group">
+            <label for="max-tokens">Max Tokens</label>
+            <input type="number" id="max-tokens" class="input input--sm" value="1024" min="1" max="8192">
+          </div>
+        </div>
+
+        <div class="control-row">
+          <div class="control-group control-group--full">
+            <label for="system-prompt">System Prompt <span class="optional">(optional)</span></label>
+            <input type="text" id="system-prompt" class="input" placeholder="You are a helpful assistant.">
+          </div>
+        </div>
+      </div>
+
+      <div class="chat-area" id="chat-area">
+        <div class="chat-empty" id="chat-empty">Send a message to get started</div>
+      </div>
+
+      <div class="input-row">
+        <label for="user-input" class="sr-only">Message</label>
+        <textarea id="user-input" class="input input--textarea" rows="2" placeholder="Type a message…"></textarea>
+        <button class="btn btn--primary" id="btn-send">Send</button>
+        <button class="btn btn--danger" id="btn-clear">Clear</button>
+      </div>
+    </section>
+
+    <!-- Request Log -->
+    <section class="panel panel--log">
+      <h2 class="panel__heading">Request Log <span class="log-count" id="log-count">0</span></h2>
+      <div class="log-list" id="log-list">
+        <p class="log-empty">No requests yet</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>Fake Claude API — zero dependencies, local-only proxy</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
