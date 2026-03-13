@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Theme Switcher</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="header">
+    <h1>Theme Switcher</h1>
+    <div class="theme-controls">
+      <label for="theme-select" class="sr-only">Select theme</label>
+      <select id="theme-select" aria-label="Select theme">
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+        <option value="system">System</option>
+      </select>
+      <button id="theme-toggle" type="button" aria-label="Toggle theme">
+        <span class="icon icon-light" aria-hidden="true">☀️</span>
+        <span class="icon icon-dark" aria-hidden="true">🌙</span>
+      </button>
+    </div>
+  </header>
+
+  <main class="main">
+    <section class="card">
+      <h2>Theme Switching Demo</h2>
+      <p>Toggle between light and dark themes using the controls above. Your preference is saved to localStorage and persists across page reloads.</p>
+      <p>Select <strong>System</strong> to follow your operating system's color scheme automatically.</p>
+    </section>
+
+    <section class="card">
+      <h2>Sample Content</h2>
+      <p>This card demonstrates how themed CSS variables apply consistently across components.</p>
+      <button class="btn btn-primary" type="button">Primary Action</button>
+      <button class="btn btn-secondary" type="button">Secondary Action</button>
+    </section>
+
+    <section class="card">
+      <h2>Form Elements</h2>
+      <form onsubmit="return false">
+        <div class="form-group">
+          <label for="sample-input">Text Input</label>
+          <input type="text" id="sample-input" placeholder="Type something...">
+        </div>
+        <div class="form-group">
+          <label for="sample-textarea">Textarea</label>
+          <textarea id="sample-textarea" rows="3" placeholder="Write here..."></textarea>
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>Theme Switcher &mdash; Vanilla JS</p>
+  </footer>
+
+  <script src="theme.js"></script>
+</body>
+</html>
